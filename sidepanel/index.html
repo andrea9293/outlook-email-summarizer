@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+  </head>
+<body>
+  <h1>Email Summarizer</h1>
+  <span>powered by gemini-2.0-flash-thinking-exp</span>
+  <div class="controls">
+    <button id="button-prompt" class="primary">Riassumi Email</button>
+    <div class="options">
+      <select id="summary-type">
+        <option value="brief">Riassunto Breve</option>
+        <option value="detailed">Riassunto Dettagliato</option>
+        <option value="bullets">Punti Chiave</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Contenitori per il feedback -->
+  <div id="email-info" hidden>
+    <h3>Oggetto Email:</h3>
+    <div id="email-subject"></div>
+  </div>
+
+  <div id="response" class="text" hidden></div>
+  
+  <div id="chat-section" class="chat-section">
+    <div id="chat-messages" class="chat-messages"></div>
+    <div class="chat-input-container">
+      <input type="text" id="chat-input" placeholder="Fai una domanda sull'email...">
+      <button id="send-message" class="primary">Invia</button>
+    </div>
+  </div>
+
+  <div id="loading" class="text" hidden>
+    <span class="blink">Elaborazione in corso...</span>
+  </div>
+  <div id="error" class="text" hidden></div>
+
+  <script src="../node_modules/marked/marked.min.js"></script>
+  <script src="../dist/sidepanel.bundle.js" type="module"></script>
+</body>
+</html>

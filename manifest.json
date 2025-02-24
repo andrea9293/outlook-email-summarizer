@@ -1,0 +1,26 @@
+{
+  "name": "Outlook Email Summarizer",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Riassume le email di Outlook usando Gemini AI",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "https://outlook.live.com/*",
+    "https://outlook.office365.com/*",
+    "https://outlook.office.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel/index.html"
+  },
+  "action": {
+    "default_title": "Summarize Email"
+  }
+}
