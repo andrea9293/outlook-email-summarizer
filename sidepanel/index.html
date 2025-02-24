@@ -7,19 +7,19 @@
   <h1>Email Summarizer</h1>
   <span>powered by gemini-2.0-flash-thinking-exp</span>
   <div class="controls">
-    <button id="button-prompt" class="primary">Riassumi Email</button>
+    <button id="button-prompt" class="primary">Summarize Email</button>
     <div class="options">
       <select id="summary-type">
-        <option value="brief">Riassunto Breve</option>
-        <option value="detailed">Riassunto Dettagliato</option>
-        <option value="bullets">Punti Chiave</option>
+        <option value="brief">Brief Summary</option>
+        <option value="detailed">Detailed Summary</option>
+        <option value="bullets">Key Points</option>
       </select>
     </div>
   </div>
 
-  <!-- Contenitori per il feedback -->
+  <!-- Containers for feedback -->
   <div id="email-info" hidden>
-    <h3>Oggetto Email:</h3>
+    <h3>Email Subject:</h3>
     <div id="email-subject"></div>
   </div>
 
@@ -28,13 +28,13 @@
   <div id="chat-section" class="chat-section">
     <div id="chat-messages" class="chat-messages"></div>
     <div class="chat-input-container">
-      <input type="text" id="chat-input" placeholder="Fai una domanda sull'email...">
-      <button id="send-message" class="primary">Invia</button>
+      <input type="text" id="chat-input" placeholder="Ask a question about the email...">
+      <button id="send-message" class="primary">Send</button>
     </div>
   </div>
 
   <div id="loading" class="text" hidden>
-    <span class="blink">Elaborazione in corso...</span>
+    <span class="blink">Processing...</span>
   </div>
   <div id="error" class="text" hidden></div>
 

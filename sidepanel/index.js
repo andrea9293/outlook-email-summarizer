@@ -5,7 +5,6 @@ import {
 } from '../node_modules/@google/generative-ai/dist/index.mjs';
 import { config } from '../src/config.js';
 
-// const apiKey = 'AIzaSyAyb36chr8WA-9ShumvcoDFEVtloNVKbow';
 const apiKey = config.API_KEY;
 
 let genAI = null;
@@ -44,7 +43,7 @@ async function extractEmailContent() {
   const [result] = await chrome.scripting.executeScript({
     target: { tabId: tab.id },
     function: () => {
-      // Utilizzo dell'ID specifico del corpo del messaggio
+      // Using specific message body ID
       const emailBody = document.querySelector('#ReadingPaneContainerId');
       const subject = document.querySelector('[role="heading"]');
       
@@ -60,17 +59,17 @@ async function extractEmailContent() {
 async function summarizeEmail() {
   try {
     const emailData = await extractEmailContent();
-    const prompt = `Riassumi questa email in punti chiave mantenendo le informazioni essenziali:\n\nOggetto: ${emailData.subject}\n\nContenuto:\n${emailData.body}`;
+    const prompt = `Summarize this email in key points while keeping essential information:\n\nSubject: ${emailData.subject}\n\nContent:\n${emailData.body}`;
     const result = await model.generateContent(prompt);
     const response = await result.response;
     return response.text();
   } catch (e) {
-    console.error('Errore durante il riassunto:', e);
+    console.error('Error during summarization:', e);
     throw e;
   }
 }
 
-// Funzione per aggiungere un messaggio alla chat
+// Function to add a message to chat
 function addMessage(content, isUser = false) {
   const messageDiv = document.createElement('div');
   messageDiv.className = `chat-message ${isUser ? 'user-message' : 'ai-message'}`;
@@ -79,7 +78,7 @@ function addMessage(content, isUser = false) {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-// Gestione dell'invio dei messaggi
+// Handle message sending
 async function handleChatMessage() {
   const emailContent = await extractEmailContent();
   const message = chatInput.value.trim();
@@ -90,7 +89,7 @@ async function handleChatMessage() {
   showLoading();
 
   try {
-    const prompt = `Basandoti su questa email:\n\nContenuto:\n${emailContent.body}\n\nRispondi a questa domanda: ${message}`;
+    const prompt = `Based on this email:\n\nContent:\n${emailContent.body}\n\nAnswer this question: ${message}`;
     const result = await model.generateContent(prompt);
     const response = await result.response;
     addMessage(response.text());
@@ -104,7 +103,6 @@ async function handleChatMessage() {
 buttonPrompt.addEventListener('click', async () => {
   showLoading();
   try {
-    // initModel(generationConfig);
     const summary = await summarizeEmail();
     showResponse(summary);
   } catch (e) {
