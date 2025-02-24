@@ -26,7 +26,7 @@ Transform your Outlook experience with AI-powered email summaries using Gemini A
 
 1. Clone the repository
 ``` 
-git clone https://github.com/yourusername/outlook-email-summarizer.git
+git clone https://github.com/andrea9293/outlook-email-summarizer.git
 ```
 
 2. Install dependencies
